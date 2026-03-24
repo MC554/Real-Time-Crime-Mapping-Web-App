@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crime Analytics Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="charts.js"></script>
+
+</head>
+
+<body>
+
+<header>
+<h1>Crime Analytics & Trends</h1>
+</header>
+
+<div class="container">
+
+<div class="stats">
+
+<div class="stat-card">
+<h3>Most Common Crime</h3>
+<p>Theft</p>
+</div>
+
+<div class="stat-card">
+<h3>Total Crimes This Week</h3>
+<p>42</p>
+</div>
+
+<div class="stat-card">
+<h3>Safest Area</h3>
+<p>Sandyford</p>
+</div>
+
+</div>
+
+<div class="dashboard">
+
+<div class="chart-card">
+<h3>Crimes by Type</h3>
+<canvas id="typeChart"></canvas>
+</div>
+
+<div class="chart-card">
+<h3>Crimes by Time of Day</h3>
+<canvas id="timeChart"></canvas>
+</div>
+
+<div class="chart-card">
+<h3>Weekly Crime Trend</h3>
+<canvas id="trendChart"></canvas>
+</div>
+
+<div class="chart-card">
+<h3>Crime Hotspots</h3>
+<div class="map-placeholder">
+Heatmap Placeholder
+</div>
+</div>
+
+</div>
+
+</div>
+</body>
+</html>
