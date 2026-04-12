@@ -1,66 +1,44 @@
-// --- Dublin Data Definition ---
-const crimes = [
-    {
-        id: 1,
-        title: "Phone Theft",
-        type: "Theft",
-        severity: 2,
-        date: "2026-03-01 18:30:00",
-        location: [53.287200, -6.373000],
-        area: "Tallaght",
-        city: "Dublin",
-        description: "Phone stolen near The Square Shopping Centre."
-    },
-    {
-        id: 2,
-        title: "Late Night Assault",
-        type: "Assault",
-        severity: 4,
-        date: "2026-03-02 23:15:00",
-        location: [53.349800, -6.260300],
-        area: "City Centre",
-        city: "Dublin",
-        description: "Physical altercation outside nightclub."
-    },
-    {
-        id: 3,
-        title: "House Burglary",
-        type: "Burglary",
-        severity: 3,
-        date: "2026-03-03 14:20:00",
-        location: [53.388000, -6.375000],
-        area: "Blanchardstown",
-        city: "Dublin",
-        description: "Break-in reported in residential estate."
-    },
-    {
-        id: 4,
-        title: "Graffiti Incident",
-        type: "Vandalism",
-        severity: 2,
-        date: "2026-03-04 09:45:00",
-        location: [53.274000, -6.216000],
-        area: "Sandyford",
-        city: "Dublin",
-        description: "Graffiti found on office building wall."
-    },
-    {
-        id: 5,
-        title: "Armed Robbery",
-        type: "Robbery",
-        severity: 5,
-        date: "2026-03-05 20:15:00",
-        location: [53.345000, -6.267200],
-        area: "City Centre",
-        city: "Dublin",
-        description: "Convenience store robbed by masked suspect."
-    }
-];
+// 1) Connect to Supabase
+const SUPABASE_URL = "https://ewndxymuxarazcshanry.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV3bmR4eW11eGFyYXpjc2hhbnJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMTkyMDcsImV4cCI6MjA3MzU5NTIwN30.QvtvV5q7pZaSbuGQcLpeDG5AutHL0e_1dZ_qXJFdGOY";
 
+let crimes = [];
 let map;
 let markerLayer = L.layerGroup();
 let heatLayer = null;
 let currentView = 'pins';
+
+// 2) Fetch crimes from Supabase
+async function fetchCrimes() {
+    const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+    const { data, error } = await client
+        .from('crimes')
+        .select(`
+            *,
+            areas(name, city),
+            crime_types(name, severity_level)
+        `)
+
+    if (error) {
+        console.error('Error fetching crimes:', error)
+        return
+    }
+
+    crimes = data.map(c => ({
+        id: c.id,
+        title: c.title,
+        type: c.crime_types?.name || 'Unknown',
+        severity: c.crime_types?.severity_level || 1,
+        date: c.crime_date,
+        location: [c.latitude, c.longitude],
+        area: c.areas?.name || 'Unknown',
+        city: c.areas?.city || 'Dublin',
+        description: c.description
+    }))
+
+    renderData()
+}
 
 const getSeverityColor = (lvl) => {
     const colors = { 5: '#ef4444', 4: '#f97316', 3: '#eab308', 2: '#3b82f6', 1: '#22c55e' };
@@ -87,7 +65,7 @@ function initMap() {
     }).addTo(map);
 
     markerLayer.addTo(map);
-    renderData();
+    fetchCrimes();
 }
 
 function renderData() {
