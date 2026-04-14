@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dublin Live - User Settings</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-badge">DL</div>
+          <div>
+            <h1>Dublin Live</h1>
+            <p>Crime awareness dashboard</p>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a href="#">Home</a>
+          <a href="#">Crime Feed</a>
+          <a href="#">Analytics</a>
+          <a href="#" class="active">User Settings</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <h3>About this page</h3>
+          <p>
+            Personalize alerts, manage saved locations, and adjust display
+            settings in a clean dashboard layout.
+          </p>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-text">
+            <h2>User Settings</h2>
+            <p>Manage alerts, saved places, and display preferences.</p>
+          </div>
+          <div class="status-pill" id="liveStatusPill">Live alerts active</div>
+        </header>
+
+        <section class="grid">
+          <div class="column">
+            <div class="card">
+              <div class="card-header">
+                <h3>Crime Preferences</h3>
+                <p>Select the incident types you want to track.</p>
+              </div>
+
+              <div class="checkbox-grid">
+                <label class="checkbox-item"
+                  ><input class="crime-checkbox" type="checkbox" checked />
+                  Theft</label
+                >
+                <label class="checkbox-item"
+                  ><input class="crime-checkbox" type="checkbox" checked />
+                  Assault</label
+                >
+                <label class="checkbox-item"
+                  ><input class="crime-checkbox" type="checkbox" />
+                  Burglary</label
+                >
+                <label class="checkbox-item"
+                  ><input class="crime-checkbox" type="checkbox" checked />
+                  Vandalism</label
+                >
+                <label class="checkbox-item"
+                  ><input class="crime-checkbox" type="checkbox" />
+                  Robbery</label
+                >
+                <label class="checkbox-item"
+                  ><input class="crime-checkbox" type="checkbox" /> Anti-social
+                  behaviour</label
+                >
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3>Alert Settings</h3>
+                <p>Control when and how you receive notifications.</p>
+              </div>
+
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="radius">Alert radius</label>
+                  <select id="radius">
+                    <option>1 km</option>
+                    <option selected>2 km</option>
+                    <option>5 km</option>
+                    <option>10 km</option>
+                  </select>
+                </div>
+
+                <div class="input-group">
+                  <label for="frequency">Notification type</label>
+                  <select id="frequency">
+                    <option selected>Real-time</option>
+                    <option>Hourly digest</option>
+                    <option>Daily summary</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="toggle-row">
+                <div>
+                  <h4>Push notifications</h4>
+                  <p>Receive alerts when matching crime occurs nearby.</p>
+                </div>
+                <button id="notifyToggle" class="toggle active" type="button">
+                  <span></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3>Saved Locations</h3>
+                <p>Keep important places for quick access and alerts.</p>
+              </div>
+
+              <div class="location-list" id="locationList">
+                <div class="location-item">
+                  <div>
+                    <strong>Home</strong>
+                    <p>Tallaght, Dublin</p>
+                  </div>
+                  <div class="location-actions">
+                    <button class="ghost-btn edit-btn" type="button">
+                      Edit
+                    </button>
+                    <button class="ghost-btn remove-btn" type="button">
+                      Remove
+                    </button>
+                  </div>
+                </div>
+
+                <div class="location-item">
+                  <div>
+                    <strong>Work</strong>
+                    <p>Dublin City Centre</p>
+                  </div>
+                  <div class="location-actions">
+                    <button class="ghost-btn edit-btn" type="button">
+                      Edit
+                    </button>
+                    <button class="ghost-btn remove-btn" type="button">
+                      Remove
+                    </button>
+                  </div>
+                </div>
+
+                <div class="location-item">
+                  <div>
+                    <strong>School</strong>
+                    <p>TU Dublin Tallaght</p>
+                  </div>
+                  <div class="location-actions">
+                    <button class="ghost-btn edit-btn" type="button">
+                      Edit
+                    </button>
+                    <button class="ghost-btn remove-btn" type="button">
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="add-location">
+                <input
+                  id="newLocationName"
+                  type="text"
+                  placeholder="Location label e.g. Gym"
+                />
+                <input
+                  id="newLocationAddress"
+                  type="text"
+                  placeholder="Location address"
+                />
+                <button id="addLocationBtn" class="primary-btn" type="button">
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="card">
+              <div class="card-header">
+                <h3>Appearance</h3>
+                <p>Choose how the dashboard looks.</p>
+              </div>
+
+              <div class="theme-box">
+                <div>
+                  <h4>Theme mode</h4>
+                  <p>Switch between light and dark mode.</p>
+                </div>
+                <button id="themeToggle" class="secondary-btn" type="button">
+                  Toggle Theme
+                </button>
+              </div>
+            </div>
+
+            <div class="card preview-card">
+              <div class="card-header">
+                <h3>Alert Summary</h3>
+                <p>Your current safety preferences at a glance.</p>
+              </div>
+
+              <div class="summary-box">
+                <div class="summary-item">
+                  <span>Tracked crimes</span
+                  ><strong id="trackedCrimesCount">3 selected</strong>
+                </div>
+                <div class="summary-item">
+                  <span>Alert radius</span
+                  ><strong id="alertRadiusText">2 km</strong>
+                </div>
+                <div class="summary-item">
+                  <span>Saved places</span
+                  ><strong id="savedCount">3 locations</strong>
+                </div>
+                <div class="summary-item">
+                  <span>Notifications</span
+                  ><strong id="notifyStatusText">Enabled</strong>
+                </div>
+                <div class="summary-item">
+                  <span>Notification type</span
+                  ><strong id="frequencyText">Real-time</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3>About the Project</h3>
+                <p>Context and source information.</p>
+              </div>
+
+              <div class="about-text">
+                <p>
+                  Dublin Live is a student web application concept focused on
+                  mapping incidents, reviewing trends, and helping users stay
+                  aware of local crime activity.
+                </p>
+                <p>
+                  Data source information can be linked here, such as public
+                  safety or open data feeds used for academic demonstration
+                  purposes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
