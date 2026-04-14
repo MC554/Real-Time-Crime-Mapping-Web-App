@@ -1,0 +1,40 @@
+<!-- mercy -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crime Feed</title>
+    <link rel="stylesheet" href="crimestyle.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Crime Feed</h1>
+        <p class="subtitle">Live incident updates across Dublin</p>
+        <p class="count" id="count"></p>
+      </header>
+
+      <section class="controls">
+        <input id="search" type="text" placeholder="Search by area or title" />
+
+        <select id="sort">
+          <option value="newest">Sort by: Newest</option>
+          <option value="severity">Sort by: Most Severe</option>
+        </select>
+
+        <select id="filter">
+          <option value="all">All Types</option>
+          <option value="Theft">Theft</option>
+          <option value="Assault">Assault</option>
+          <option value="Vandalism">Vandalism</option>
+        </select>
+      </section>
+
+      <section id="feed" class="feed"></section>
+    </main>
+
+    <script src="currentcrimescript.js"></script>
+  </body>
+</html>
