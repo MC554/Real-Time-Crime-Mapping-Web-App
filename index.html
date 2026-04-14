@@ -17,7 +17,7 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
 
-    <!-- Your custom CSS -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css"/>
 
     <script>
@@ -65,26 +65,30 @@
         <!-- Navigation Bar -->
         <div class="flex items-center gap-6 mb-6 text-sm font-semibold select-none">
 
-            <!-- Home (Active) -->
-            <button onclick="window.location.href='index.html'" class="relative text-indigo-600 transition-colors group">
+            <!-- Home -->
+            <button onclick="window.location.href='index.html'" 
+                class="relative text-indigo-600 transition-colors group">
                 Home
                 <span class="absolute left-0 -bottom-1 w-full h-[2px] bg-indigo-600 rounded-full"></span>
             </button>
 
             <!-- Crime Feed -->
-            <button class="relative text-slate-600 hover:text-indigo-600 transition-colors group">
+            <button onclick="window.location.href='currentcrimeindex.html'"
+                class="relative text-slate-600 hover:text-indigo-600 transition-colors group">
                 Crime Feed
                 <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-indigo-600 rounded-full group-hover:w-full transition-all"></span>
             </button>
 
             <!-- Analytics -->
-            <button onclick="window.location.href='analytics.html'" class="relative text-slate-600 hover:text-indigo-600 transition-colors group">
+            <button onclick="window.location.href='analytics.html'" 
+                class="relative text-slate-600 hover:text-indigo-600 transition-colors group">
                 Analytics
                 <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-indigo-600 rounded-full group-hover:w-full transition-all"></span>
             </button>
 
             <!-- User Settings -->
-            <button class="relative text-slate-600 hover:text-indigo-600 transition-colors group">
+            <button onclick="window.location.href='settings.html'"
+                class="relative text-slate-600 hover:text-indigo-600 transition-colors group">
                 User Settings
                 <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-indigo-600 rounded-full group-hover:w-full transition-all"></span>
             </button>
@@ -106,6 +110,7 @@
             <!-- Filters -->
             <section class="space-y-6">
 
+                <!-- Search -->
                 <div class="space-y-2">
                     <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Location Search</label>
                     <div class="relative">
@@ -116,7 +121,10 @@
                     </div>
                 </div>
 
+                <!-- Filters Row -->
                 <div class="grid grid-cols-2 gap-3">
+
+                    <!-- Crime Type -->
                     <div class="space-y-2">
                         <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Crime Type</label>
                         <select id="filter-type"
@@ -124,11 +132,13 @@
                             <option value="all">All Types</option>
                             <option value="Theft">Theft</option>
                             <option value="Assault">Assault</option>
+                            <option value="Burglary">Burglary</option>
                             <option value="Vandalism">Vandalism</option>
-                            <option value="Public Order">Public Order</option>
+                            <option value="Robbery">Robbery</option>
                         </select>
                     </div>
 
+                    <!-- Time Filter -->
                     <div class="space-y-2">
                         <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Timeframe</label>
                         <select id="filter-time"
@@ -138,8 +148,10 @@
                             <option value="all">All Time</option>
                         </select>
                     </div>
+
                 </div>
 
+                <!-- View Mode -->
                 <div class="space-y-2">
                     <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Visualization Mode</label>
                     <div class="flex p-1 bg-slate-100 rounded-xl">
@@ -157,6 +169,7 @@
             </section>
         </div>
 
+        <!-- Footer -->
         <div class="pt-6 mt-6 border-t border-slate-100">
             <div class="bg-indigo-50/50 p-4 rounded-2xl flex items-center justify-between">
                 <div>
@@ -181,7 +194,7 @@
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    
+    <!--  Script -->
     <script src="script.js"></script>
 
 </body>
