@@ -1,70 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crime Analytics Dashboard</title>
-
-<link rel="stylesheet" href="style.css">
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script defer src="charts.js"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crime Analytics Dashboard</title>
+  <link rel="stylesheet" href="analytics_style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="chart.js"></script>
 </head>
-
 <body>
 
-<header>
-<h1>Crime Analytics & Trends</h1>
+<header class="bg-gray-900 text-white px-6 py-3 flex items-center gap-6">
+
+  <!-- Logo + brand -->
+  <div class="flex items-center gap-3 mr-auto">
+    <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-sm font-bold">DL</div>
+    <div>
+      <span class="block text-sm font-semibold">Dublin Live</span>
+      <span class="block text-xs text-gray-400">Crime awareness dashboard</span>
+    </div>
+  </div>
+
+  <!-- Nav links (his style) -->
+  <div class="flex items-center gap-6 text-sm font-semibold select-none">
+
+    <button onclick="window.location.href='index.html'"
+      class="relative text-slate-300 hover:text-indigo-400 transition-colors group">
+      Home
+      <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-indigo-500 rounded-full group-hover:w-full transition-all"></span>
+    </button>
+
+    <button onclick="window.location.href='currentcrimeindex.html'"
+      class="relative text-slate-300 hover:text-indigo-400 transition-colors group">
+      Crime Feed
+      <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-indigo-500 rounded-full group-hover:w-full transition-all"></span>
+    </button>
+
+    <!-- Analytics is the active page -->
+    <button onclick="window.location.href='analytics.html'"
+      class="relative text-indigo-400 transition-colors group">
+      Analytics
+      <span class="absolute left-0 -bottom-1 w-full h-[2px] bg-indigo-500 rounded-full"></span>
+    </button>
+
+    <button onclick="window.location.href='settings.html'"
+      class="relative text-slate-300 hover:text-indigo-400 transition-colors group">
+      User Settings
+      <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-indigo-500 rounded-full group-hover:w-full transition-all"></span>
+    </button>
+
+  </div>
+
+  <!-- Your filter dropdown -->
+  <select id="filterRange" class="bg-gray-700 text-white border border-gray-600 rounded-md px-3 py-1.5 text-sm cursor-pointer">
+    <option value="all">All time</option>
+    <option value="week">This week</option>
+    <option value="month">This month</option>
+  </select>
+
 </header>
 
 <div class="container">
 
-<div class="stats">
+  <div class="stats">
+    <div class="card"><h3>Total Crimes</h3><p id="totalCrimes">—</p></div>
+    <div class="card"><h3>Most Common Crime</h3><p id="commonCrime">—</p></div>
+    <div class="card"><h3>Peak Hour</h3><p id="peakHour">—</p></div>
+    <div class="card"><h3>Safest Area</h3><p id="safestArea">—</p></div>
+  </div>
 
-<div class="stat-card">
-<h3>Most Common Crime</h3>
-<p>Theft</p>
-</div>
+  <div class="charts-main">
+    <div class="chart-box wide">
+      <h3>Weekly Trend</h3>
+      <canvas id="trendChart"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Crimes by Area</h3>
+      <div id="areaList"></div>
+    </div>
+  </div>
 
-<div class="stat-card">
-<h3>Total Crimes This Week</h3>
-<p>42</p>
-</div>
-
-<div class="stat-card">
-<h3>Safest Area</h3>
-<p>Sandyford</p>
-</div>
-
-</div>
-
-<div class="dashboard">
-
-<div class="chart-card">
-<h3>Crimes by Type</h3>
-<canvas id="typeChart"></canvas>
-</div>
-
-<div class="chart-card">
-<h3>Crimes by Time of Day</h3>
-<canvas id="timeChart"></canvas>
-</div>
-
-<div class="chart-card">
-<h3>Weekly Crime Trend</h3>
-<canvas id="trendChart"></canvas>
-</div>
-
-<div class="chart-card">
-<h3>Crime Hotspots</h3>
-<div class="map-placeholder">
-Heatmap Placeholder
-</div>
-</div>
-
-</div>
+  <div class="charts-bottom">
+    <div class="chart-box">
+      <h3>Crimes by Type</h3>
+      <canvas id="typeChart"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Time of Day</h3>
+      <canvas id="hourChart"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>Area Comparison</h3>
+      <canvas id="compareChart"></canvas>
+    </div>
+  </div>
 
 </div>
 </body>
