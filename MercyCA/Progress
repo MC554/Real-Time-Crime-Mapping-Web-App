@@ -1,0 +1,32 @@
+// Summary of mini Pogress
+In the first weeks of the CA project, my team created a WhatsApp group & we used it as a form of communication where we arranged meetings
+to discuss what our project would be about, how many pages would be needed, and the aesthetic of the webpage. 
+Once the idea was defined we assigned who would do each task. 
+
+I choose to do page 2 which was the Crime Feed.  
+I tried to start coding my page with an idea of what I wanted it to have but after almost one week I realized it was very hard for me to 
+code without having a final visual mockup of how the webpage would look. 
+So on the 4th of April I created a mockup using Miro of how I wanted it to look like, I sent it to my WhatsApp group and once I had approval
+that they were okay with the way it was looking I finished the design  (image of final result on github "WireframingCrimeFeed.jpeg" )  
+Link to Miro : 
+https://miro.com/app/board/uXjVGnBRZ4g=/?share_link_id=630188462802  
+(check history to see when I started and finished which was the 4 of April 2026. To do that click 3 dots board > history) 
+
+The same day I sent the final output of design to my WhatsApp group. 
+
+Then I started hard coding my code. 
+The reason why I had to hard code first was because the database was assigned to one of my team members but it was not yet fully working 
+so I decided to hardcode my webpage (hard coded version can be find if you go back to history and click to go back to that version)
+My plan was first Front end app using hardcoded data, then to dynamic front end app that fetches data from a Supabase database.
+ 
+Once I finished hard coding my webpage I pushed it on GitHub on the 14 of April.
+Due to the code being updated to find previous hard coded version you will have to check on history if I find it I will push screenshot of history.
+
+Once the data on supabase was working I coded again (dynamic front end ) 
+I had issues with it at first as the webpage would come out blank (no data crime information was displaying)
+Once everything was working/figured out, I Pushed it on GitHub. 
+
+ 
+ 
+
+ 
